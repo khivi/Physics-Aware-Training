@@ -229,10 +229,21 @@ from 2020, and neither imports on anything current.
   `nn.Module`. The forward pass is untouched, so the committed checkpoints still
   load and reproduce.
 - *Make requirements.txt installable again* — which none of the above had touched.
-  Exact pins that no longer resolve, replaced with lower bounds so the same rot
-  doesn't recur. It was also missing `torchvision` and `pandas`, both imported by
-  Examples 1 and 2 — the manifest was incomplete before I got here. Verified to
-  resolve in a clean Python 3.12 environment.
+  It was also missing `torchvision` and `pandas`, both imported by Examples 1 and
+  2, so the manifest was incomplete before I got here.
+- *Add a lockfile* — the pins are what rotted, so `requirements.txt` now carries
+  lower bounds: what the project *needs*, resolvable years from now. The exact set
+  it was verified against lives in `requirements.lock` (136 packages, generated
+  with `uv pip compile --universal`, so it isn't macOS-only). Install loosely and
+  get a working repo, or `pip install -r requirements.lock` and get precisely my
+  environment. Both paths verified to resolve in a clean Python 3.12.
+
+  Worth being explicit that this was a judgement call rather than a fix. Exact
+  pins are reproducible but perishable — `torch==1.7.1` was a good pin in 2020 and
+  became unsatisfiable the moment Apple Silicon shipped. Bounds are durable but
+  drift. The lockfile is how you get both, and it matters less here than usual
+  anyway: the published numbers come from the committed checkpoints, not from the
+  library versions.
 - *Stop telling the reader to install pytorch-lightning* — both notebooks opened
   their architecture section by instructing the reader, in bold, to
   `pip install pytorch-lightning==0.9.0`. Nothing imports it and it doesn't

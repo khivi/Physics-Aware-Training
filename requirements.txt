@@ -1,29 +1,31 @@
-# Lower bounds rather than exact pins. The original exact pins (torch==1.7.1,
-# pytorch-lightning==0.9.0) no longer resolve: torch 1.7.1 has no Apple Silicon
-# wheel, and pytorch-lightning 0.9.0 cannot import alongside a current torch.
-# Verified on Python 3.12 with the versions noted on the right.
+# What the project needs. Lower bounds rather than exact pins: the original
+# exact pins (torch==1.7.1, pytorch-lightning==0.9.0) became unsatisfiable as
+# platforms moved on - torch 1.7.1 has no Apple Silicon wheel.
+#
+# For the exact set this was verified against, install from requirements.lock
+# instead:  pip install -r requirements.lock
 
-torch>=2.0                # tested 2.13.0
-torchvision>=0.15         # tested 0.28.0 - MNIST / Fashion MNIST loaders
-numpy>=1.24               # tested 2.5.1
+torch>=2.0
+torchvision>=0.15         # MNIST / Fashion MNIST loaders
+numpy>=1.24
 
 # The following packages are optional and
 # only needed for specific functionalities:
 # ---------------------------------------- #
 # for plotting in Examples 1, 2 and 3:
-matplotlib>=3.3           # tested 3.11.1 - 3.3 introduced annotate(text=)
+matplotlib>=3.3           # 3.3 introduced annotate(text=)
 
 # for plotting the confusion matrix in Examples 1 and 2:
-scikit-learn>=1.0         # tested 1.9.0
+scikit-learn>=1.0
 
 # for reading the training-curve CSV in Examples 1 and 2:
-pandas>=1.5               # tested 3.0.5
+pandas>=1.5
 
 # for the Fashion MNIST example:
-einops>=0.3               # tested 0.8.2
+einops>=0.3
 
 # to run the notebooks at all:
-notebook>=7.0             # tested 7.6.1
+notebook>=7.0
 
 # pytorch-lightning is deliberately absent. The notebooks define PNN as a plain
 # torch.nn.Module and load the committed checkpoints; see the note in Examples 1
