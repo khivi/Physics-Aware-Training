@@ -214,8 +214,8 @@ half-answered.
 
 ## Appendix: what I changed
 
-Fork of `mcmahon-lab/Physics-Aware-Training`, eleven commits. Grouped by intent;
-`git log` has them in order.
+Fork of `mcmahon-lab/Physics-Aware-Training`. Grouped by intent; `git log` has
+them in order.
 
 **Getting it to run.** The repo pins torch 1.7.1 and pytorch-lightning 0.9.0, both
 from 2020, and neither imports on anything current.
