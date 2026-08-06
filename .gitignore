@@ -1,5 +1,16 @@
-# Ignore pycache and ipynb checkpoints
-examples/__pycache__
-examples/.ipynb_checkpoints
-physics_aware_training/__pycache__
-.ipynb_checkpoints
+# Python
+__pycache__/
+.venv/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Datasets downloaded by the example notebooks (torchvision MNIST / FashionMNIST)
+ml_dataset/
+
+# Training runs written when train_flag = True (see Example 1/2 cell 17).
+# The committed training_logs/precomputed_results/ is deliberately kept.
+training_logs/new_results/
+
+# macOS
+.DS_Store
