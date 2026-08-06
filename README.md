@@ -1,3 +1,9 @@
+> **This is a fork.** Notes on what this repository is arguing, plus the
+> PAT-vs-in-silico comparison the original never runs, are in
+> **[LEARN.md](LEARN.md)**. The notebooks have also been updated to run on a
+> current torch — the original pins no longer install. Upstream:
+> [mcmahon-lab/Physics-Aware-Training](https://github.com/mcmahon-lab/Physics-Aware-Training).
+
 ![g5382](https://user-images.githubusercontent.com/35846424/116468174-894e9780-a83e-11eb-97a8-88063e1653c0.png)
 <br/><br/>
 *Physics-Aware Training* (PAT) is a method to train real physical systems with backpropagation. It was introduced in Wright, Logan G. & Onodera, Tatsuhiro *et al.* (2022)<sup>[1](#how-to-cite-this-code)</sup> to train *Physical Neural Networks* (PNNs) - neural networks whose building blocks are physical systems.
