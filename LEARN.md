@@ -220,8 +220,8 @@ them in order.
 **Getting it to run.** The repo pins torch 1.7.1 and pytorch-lightning 0.9.0, both
 from 2020, and neither imports on anything current.
 
-- *Make .gitignore self-contained* — cover `ml_dataset/`, `.venv/` and
-  `training_logs/new_results/`, none of which the original knew about.
+- *Make .gitignore self-contained* — cover `ml_dataset/` and `.venv/`, neither of
+  which the original knew about.
 - *Fix Example 3 crash on current torch/matplotlib* — `plt.annotate(s=)` became
   `text=` in matplotlib 3.3, and a tensor was kept in a list that only needed its
   value.
@@ -256,7 +256,13 @@ from 2020, and neither imports on anything current.
   model. It's the experiment. Copy-paste rot, and actively misleading in a repo
   whose entire point is the difference between those two.
 - *Fail loudly when train_flag = True* — it had become a silent `NameError` once
-  Lightning was gone. Now it fails with an explanation.
+  Lightning was gone. Now it fails with an explanation, and the `new_results`
+  output folder it used to select — unreachable, since the flag now raises — is
+  gone with it.
+- *Stop telling the reader to downgrade scikit-learn* — both notebooks instructed
+  `pip install scikit-learn==0.23.1` above the confusion matrix, below the `>=1.0`
+  floor `requirements.txt` now sets. Same shape as the pytorch-lightning
+  instruction, one section further down.
 - *Replace Example 1's / Example 2's dead pytorch-lightning trainer block with a
   note* — recording the hyperparameters
   that produced the committed checkpoints. Every Lightning API those blocks called
