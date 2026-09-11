@@ -28,31 +28,6 @@ def txt(ax, x, y, s, size=10, c=INK, ha="center", va="center", w="normal", st="n
     ax.text(x, y, s, size=size, color=c, ha=ha, va=va, weight=w, style=st, zorder=z, linespacing=1.5)
 
 
-def mono(ax, x, y, s, size=9.5, c=INK, w="normal", z=4):
-    ax.text(x, y, s, size=size, color=c, ha="left", va="center", family="DejaVu Sans Mono",
-            weight=w, zorder=z)
-
-
-def mono_parts(ax, x, y, parts, size=11):
-    """Lay out monospace runs left to right so argument positions can be coloured."""
-    cw = 0.6018 * size / 7.2          # char width in data units (13.5in page, 135 units)
-    for text, c, w in parts:
-        ax.text(x, y, text, size=size, color=c, ha="left", va="center",
-                family="DejaVu Sans Mono", weight=w, zorder=4)
-        x += cw * len(text)
-    return x
-
-
-def mono_parts(ax, x, y, parts, size=11):
-    """Lay out monospace runs left to right so argument positions can be coloured."""
-    cw = 0.6018 * size / 7.2          # char width in data units (13.5in page, 135 units)
-    for text, c, w in parts:
-        ax.text(x, y, text, size=size, color=c, ha="left", va="center",
-                family="DejaVu Sans Mono", weight=w, zorder=4)
-        x += cw * len(text)
-    return x
-
-
 def arrow(ax, x1, y1, x2, y2, c=INK, lw=1.7, ls="-", rad=0.0, z=3, ms=14):
     ax.add_patch(FancyArrowPatch((x1, y1), (x2, y2), arrowstyle="-|>", mutation_scale=ms,
                                  color=c, lw=lw, linestyle=ls, zorder=z,
@@ -105,7 +80,7 @@ def chain(ax, y, h, layer2):
     txt(ax, 10, y + h + 1.8, "forward  →", 9.5, MUTE, ha="left", st="italic")
 
 
-# ═══════════════════════ 3 · the loop, and the break ═══════════════════════
+# ═══════════════════════ 1 · the loop, and the break ═══════════════════════
 def p_loop(pdf):
     fig = plt.figure(figsize=(13.5, 9.5)); ax = canvas(fig)
     head(ax, 1, "The loop you know, and the one box that breaks it",
@@ -153,7 +128,7 @@ def p_loop(pdf):
     pdf.savefig(fig); plt.close(fig)
 
 
-# ═══════════════════════ 2 · the answer ═══════════════════════
+# ═══════════════════════ 4 · the answer ═══════════════════════
 def p_optC(pdf):
     fig = plt.figure(figsize=(13.5, 9.5)); ax = canvas(fig)
     head(ax, 4, "The answer — PAT, drawn on the same picture",
@@ -204,7 +179,7 @@ def p_optC(pdf):
     pdf.savefig(fig); plt.close(fig)
 
 
-# ═══════════════════════ 3 · alternative A ═══════════════════════
+# ═══════════════════════ 2 · alternative A ═══════════════════════
 def p_optA(pdf):
     fig = plt.figure(figsize=(13.5, 9.5)); ax = canvas(fig)
     head(ax, 2, "Alternative A — don't train the physical layer",
@@ -237,7 +212,7 @@ def p_optA(pdf):
     pdf.savefig(fig); plt.close(fig)
 
 
-# ═══════════════════════ 4 · alternative B ═══════════════════════
+# ═══════════════════════ 3 · alternative B ═══════════════════════
 def p_optB(pdf):
     fig = plt.figure(figsize=(13.5, 9.5)); ax = canvas(fig)
     head(ax, 3, "Alternative B — train against the simulator",
@@ -280,7 +255,7 @@ def p_optB(pdf):
     pdf.savefig(fig); plt.close(fig)
 
 
-# ═══════════════════════ 5 · alternative D ═══════════════════════
+# ═══════════════════════ 6 · alternative D ═══════════════════════
 def p_optD(pdf):
     fig = plt.figure(figsize=(13.5, 9.5)); ax = canvas(fig)
     head(ax, 6, "Alternative D — measure the gradient on the device itself",
@@ -454,7 +429,7 @@ def p_optE(pdf):
     pdf.savefig(fig); plt.close(fig)
 
 
-# ═══════════════════════ 6 · experiment 1 ═══════════════════════
+# ═══════════════════════ 8 · experiment 1 ═══════════════════════
 def p_ex1(pdf):
     fig = plt.figure(figsize=(13.5, 9.5)); ax = canvas(fig)
     head(ax, 8, "Experiment 1 — can physics learn?",
@@ -492,7 +467,7 @@ def p_ex1(pdf):
     pdf.savefig(fig); plt.close(fig)
 
 
-# ═══════════════════════ 7 · experiment 3 ═══════════════════════
+# ═══════════════════════ 9 · experiment 3 ═══════════════════════
 def p_ex3(pdf):
     fig = plt.figure(figsize=(13.5, 9.5)); ax = canvas(fig)
     head(ax, 9, "Experiment 3 — what a tiny gap does",
@@ -532,7 +507,7 @@ def p_ex3(pdf):
     pdf.savefig(fig); plt.close(fig)
 
 
-# ═══════════════════════ 8 · experiment 2 ═══════════════════════
+# ═══════════════════════ 10 · experiment 2 ═══════════════════════
 def p_ex2(pdf):
     fig = plt.figure(figsize=(13.5, 9.5)); ax = canvas(fig)
     head(ax, 10, "Experiment 2 — PAT vs B",
@@ -579,7 +554,7 @@ def p_ex2(pdf):
     pdf.savefig(fig); plt.close(fig)
 
 
-# ═══════════════════════ 9 · learnings ═══════════════════════
+# ═══════════════════════ 11 · learnings ═══════════════════════
 def p_learn(pdf):
     fig = plt.figure(figsize=(13.5, 9.5)); ax = canvas(fig)
     head(ax, None, "Learnings", "the whole deck, one line per page.", ("SUMMARY", INK))
@@ -616,7 +591,7 @@ def p_learn(pdf):
     pdf.savefig(fig); plt.close(fig)
 
 
-# ═══════════════════════ 11 · taxonomy ═══════════════════════
+# ═══════════════════════ 12 · taxonomy ═══════════════════════
 def p_tax(pdf):
     fig = plt.figure(figsize=(13.5, 9.5)); ax = canvas(fig)
     head(ax, None, "Taxonomy — the vocabulary, one entry each",
